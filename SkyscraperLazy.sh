@@ -39,5 +39,6 @@ SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
 
 for SYSTEM in ${SYSTEMS[@]};
 do
+SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
 Skyscraper -p $SYSTEM -s screenscraper && Skyscraper -p $SYSTEM
 done
