@@ -3,7 +3,7 @@ SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
 	"atarilynx" "Atari - Lynx" OFF \
 	"doom" "DOOM" OFF \
 	"dos" "DOS" OFF \
-	"fbneo" "FBNeo - Arcade Games" OFF \
+	"arcade" "Arcade Games" OFF \
 	"pcengine" "NEC - PC Engine - TurboGrafx 16" OFF \
 	"pcenginecd" "NEC - PC Engine CD - TurboGrafx-CD" OFF \
 	"gb" "Nintendo - Game Boy" OFF \
@@ -35,10 +35,21 @@ SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
 	"3do" "The 3DO Company - 3DO" OFF \
  3>&1 1>&2 2>&3)
 
-
-
-for SYSTEM in ${SYSTEMS[@]};
+SOURCES=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Please select the sources you want to fetch from" 3 78 15 \
+    "screenscraper" "" OFF \
+    "mobygames" "" OFF \
+    "thegamesdb" "" OFF \
+    "arcadedb" "" OFF \
+    "openretro" "" OFF \
+ 3>&1 1>&2 2>&3)
+ for SYSTEM in ${SYSTEMS[@]};
 do
 SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
-Skyscraper -p $SYSTEM -s screenscraper && Skyscraper -p $SYSTEM
+for SOURCE in ${SOURCES[@]};
+do
+SOURCE=$(echo $SOURCE| sed 's/\"//g')
+
+Skyscraper -p $SYSTEM -s $SOURCE
+done
+Skyscraper -p $SYSTEM
 done
