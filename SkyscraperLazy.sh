@@ -49,7 +49,7 @@ for SOURCE in ${SOURCES[@]};
 do
 SOURCE=$(echo $SOURCE| sed 's/\"//g')
 
-Skyscraper -p $SYSTEM -s $SOURCE
+Skyscraper -p $SYSTEM -s $SOURCE --refresh
 done
 Skyscraper -p $SYSTEM
 done
