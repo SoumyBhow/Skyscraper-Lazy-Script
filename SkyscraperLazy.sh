@@ -32,6 +32,7 @@ SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
 	"sega32x" "Sega - 32X" OFF \
 	"segacd" "Sega - Mega-CD - Sega CD" OFF \
 	"snes" "Nintendo - Super Nintendo Entertainment System" OFF \
+	"switch" "Nintendo - Nintendo Switch" OFF \
 	"wii" "Nintendo - Wii" OFF \
  3>&1 1>&2 2>&3)
 
