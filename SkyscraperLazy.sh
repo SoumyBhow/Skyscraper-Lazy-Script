@@ -53,9 +53,8 @@ SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
 for SOURCE in ${SOURCES[@]}; do
 SOURCE=$(echo $SOURCE| sed 's/\"//g')
 if REFRESH; then
-Skyscraper -p $SYSTEM -s $SOURCE --refresh
+Skyscraper -p $SYSTEM -s $SOURCE --cache refresh
 echo "Refreshing"
-
 else
 Skyscraper -p $SYSTEM -s $SOURCE
 echo "No refresh"
