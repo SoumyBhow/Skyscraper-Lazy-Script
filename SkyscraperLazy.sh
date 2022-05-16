@@ -1,14 +1,3 @@
-ProgramError= false
-if [[ ! -f "$PATH/Skyscraper" ]]; then
-	echo 'You need the Skyscraper program for this script to work!'
-	ProgramError= true
-elif [[ ! -f "$PATH/whiptail" ]]; then
-	echo 'You need whiptail/libnewt for this script to work!'
-	ProgramError= true
-fi
-if $ProgramError; then
-	exit
-fi
 SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Please select the systems you want to scrape" 20 78 15 \
 	"3do" "The 3DO Company - 3DO" OFF \
 	"3ds" "Nintendo - Nintendo 3DS" OFF \
@@ -60,9 +49,9 @@ REFRESH=$(whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Would you
 
 
 for SYSTEM in ${SYSTEMS[@]}; do
-SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
+	SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
 for SOURCE in ${SOURCES[@]}; do
-SOURCE=$(echo $SOURCE| sed 's/\"//g')
+	SOURCE=$(echo $SOURCE| sed 's/\"//g')
 
 
 	if $REFRESH; then
