@@ -45,7 +45,7 @@ SOURCES=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
  3>&1 1>&2 2>&3)
 
 
-REFRESH=$(whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Would you like to refetch all data from online?" 8 78)
+REFRESH=$(whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Would you like to refetch all data from online?" 8 78 3>&1 1>&2 2>&3)
 
 
 for SYSTEM in ${SYSTEMS[@]}; do
