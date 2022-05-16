@@ -49,17 +49,17 @@ REFRESH=$(whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Would you
 
 
 for SYSTEM in ${SYSTEMS[@]}; do
-	SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
+SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
 for SOURCE in ${SOURCES[@]}; do
-	SOURCE=$(echo $SOURCE| sed 's/\"//g')
-	if [ "$REFRESH" ]; then
-		Skyscraper -p $SYSTEM -s $SOURCE --refresh
-		echo "Refreshing"
+SOURCE=$(echo $SOURCE| sed 's/\"//g')
+if [ "$REFRESH" ]; then
+Skyscraper -p $SYSTEM -s $SOURCE --refresh
+echo "Refreshing"
 
-	else
-		Skyscraper -p $SYSTEM -s $SOURCE
-		echo "No refresh"
-	fi
-	done
+else
+Skyscraper -p $SYSTEM -s $SOURCE
+echo "No refresh"
+fi
+done
 Skyscraper -p $SYSTEM
 done
