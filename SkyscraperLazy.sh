@@ -45,19 +45,23 @@ SOURCES=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
  3>&1 1>&2 2>&3)
 
 
-REFRESH=$(whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Would you like to refetch all data from online?" 8 78 3>&1 1>&2 2>&3)
-
+REFRESH=false
+if (whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Do you want to refetch everything from online again?" 8 78); then
+    REFRESH=true
+else
+    REFRESH=false
+fi
 
 for SYSTEM in ${SYSTEMS[@]}; do
 SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
 for SOURCE in ${SOURCES[@]}; do
 SOURCE=$(echo $SOURCE| sed 's/\"//g')
-if REFRESH; then
-Skyscraper -p $SYSTEM -s $SOURCE --cache refresh
-echo "Refreshing"
+if [ "$REFRESH"=true ]; then
+Skyscraper -p $SYSTEM -s $SOURCE --refresh
+
 else
 Skyscraper -p $SYSTEM -s $SOURCE
-echo "No refresh"
+
 fi
 done
 Skyscraper -p $SYSTEM
