@@ -52,7 +52,7 @@ for SYSTEM in ${SYSTEMS[@]}; do
 	SYSTEM=$(echo $SYSTEM | sed 's/\"//g')
 for SOURCE in ${SOURCES[@]}; do
 	SOURCE=$(echo $SOURCE| sed 's/\"//g')
-	if [ "$REFRESH" = true ]; then
+	if [ "$REFRESH" ]; then
 		Skyscraper -p $SYSTEM -s $SOURCE --refresh
 
 	else
