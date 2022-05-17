@@ -1,3 +1,4 @@
+#!/bin/bash
 SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Please select the systems you want to scrape" 20 78 15 \
 	"3do" "The 3DO Company - 3DO" OFF \
 	"3ds" "Nintendo - Nintendo 3DS" OFF \
@@ -53,7 +54,7 @@ fi
 for SYSTEM in $(eval echo "${SYSTEMS}"); do 
 for SOURCE in $(eval echo "${SOURCES}"); do
 
-Skyscraper -p $SYSTEM -s $SOURCE $REFRESH
+Skyscraper -p "$SYSTEM" -s "$SOURCE" "$REFRESH"
 done
-Skyscraper -p $SYSTEM
+Skyscraper -p "$SYSTEM"
 done
