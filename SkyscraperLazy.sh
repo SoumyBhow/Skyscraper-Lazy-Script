@@ -1,4 +1,16 @@
 #!/bin/bash
+ERROR=false
+if ! command -v Skyscraper >> /dev/null; then
+echo "You need to install Skyscraper before using this script!"
+ERROR=true
+fi
+if ! command -v whiptail >> /dev/null; then
+echo "You need to install Whiptail/Libnewt before using this script!"
+ERROR=true
+fi
+if [[ "$ERROR" = true ]]; then
+exit
+fi
 SYSTEMS=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Please select the systems you want to scrape" 20 78 15 \
 	"3do" "The 3DO Company - 3DO" OFF \
 	"3ds" "Nintendo - Nintendo 3DS" OFF \
