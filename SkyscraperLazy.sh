@@ -58,7 +58,7 @@ SOURCES=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
  3>&1 1>&2 2>&3)
 
 
-REFRESH=''
+REFRESH=
 if whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Do you want to refetch everything from online again?" 8 78; then
     REFRESH=--cache refresh
 fi
