@@ -58,15 +58,20 @@ SOURCES=$(whiptail --title "Lazy Skyline ROM Scraping Script" --checklist "Pleas
  3>&1 1>&2 2>&3)
 
 
-REFRESH=
-if whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Do you want to refetch everything from online again?" 8 78; then
-    REFRESH= --cache refresh
+REFRESH=false
+if (whiptail --title "Lazy Skyline ROM Scraping Script" --yesno "Do you want to refetch everything from online again?" 8 78); then
+    REFRESH=true
 fi
 
 for SYSTEM in $(eval echo "${SYSTEMS}"); do 
 for SOURCE in $(eval echo "${SOURCES}"); do
+if [ "$REFRESH" = true ]; then
+Skyscraper -p $SYSTEM -s $SOURCE --refresh
 
-Skyscraper -p "$SYSTEM" -s "$SOURCE""$REFRESH"
+else
+Skyscraper -p $SYSTEM -s $SOURCE
+
+fi
 done
 Skyscraper -p "$SYSTEM"
 done
