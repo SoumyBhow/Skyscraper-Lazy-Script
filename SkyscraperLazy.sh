@@ -75,3 +75,4 @@ fi
 done
 Skyscraper -p "$SYSTEM"
 done
+exit
